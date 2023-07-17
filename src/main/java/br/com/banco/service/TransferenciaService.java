@@ -1,8 +1,11 @@
 package br.com.banco.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.banco.models.ContaModel;
 import br.com.banco.models.TransferenciaModel;
 import br.com.banco.repositories.TransferenciaRepository;
 
@@ -18,5 +21,8 @@ public class TransferenciaService {
 
     public TransferenciaModel listarTransferenciaId(Long id) {
         return tr.findById(id).orElse(null);
+    }
+    public List<TransferenciaModel> findByNome(String nomeConta) {
+        return tr.findByNome(nomeConta);
     }
 }

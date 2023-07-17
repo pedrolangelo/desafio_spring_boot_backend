@@ -1,11 +1,16 @@
 package br.com.banco.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.banco.models.ContaModel;
 import br.com.banco.models.TransferenciaModel;
 import br.com.banco.service.TransferenciaService;
 
@@ -28,5 +33,10 @@ public class TranferenciaController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/transferencia/nome")
+    public ResponseEntity<List<TransferenciaModel>> listarPorNome(@RequestParam("nome") String nomeConta) {
+        return new ResponseEntity<List<TransferenciaModel>>(ts.findByNome(nomeConta), HttpStatus.OK);
     }
 }

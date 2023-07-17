@@ -25,7 +25,8 @@ public class TransferenciaModel {
 
     private String tipo;
 
-    private String nome_operador_transacao;
+    @Column(name = "nome_operador_transacao")
+    private String nome;
 
     @ManyToOne
     @JoinColumn(name = "conta_id")
@@ -64,12 +65,12 @@ public class TransferenciaModel {
         this.tipo = tipo;
     }
 
-    public String getNome_operador_transacao() {
-        return nome_operador_transacao;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNome_operador_transacao(String nome_operador_transacao) {
-        this.nome_operador_transacao = nome_operador_transacao;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public ContaModel getConta() {
