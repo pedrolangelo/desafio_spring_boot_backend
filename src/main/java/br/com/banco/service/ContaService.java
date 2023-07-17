@@ -12,11 +12,11 @@ public class ContaService {
     @Autowired
     private ContaRepository cr;
     
-    public Iterable<ContaModel> listar(){
+    public Iterable<ContaModel> listarConta(){
         return cr.findAll();
     }
 
-    public ContaModel listarId(Long id) {
+    public ContaModel listarContaId(Long id) {
         return cr.findById(id).orElse(null);
     }
 }

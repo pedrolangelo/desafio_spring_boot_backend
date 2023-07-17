@@ -15,9 +15,9 @@ public class ContaController {
     @Autowired
     private ContaService cs;
 
-    @GetMapping("/listar")
+    @GetMapping("/contas")
     public Iterable<ContaModel> listar(){
-        return cs.listar();
+        return cs.listarConta();
     }
 
     @GetMapping("/")
@@ -27,7 +27,7 @@ public class ContaController {
 
        @GetMapping("/contas/{id}")
     public ResponseEntity<ContaModel> listarContaPorId(@PathVariable Long id) {
-        ContaModel conta = cs.listarId(id);
+        ContaModel conta = cs.listarContaId(id);
         if (conta != null) {
             return ResponseEntity.ok(conta);
         } else {
