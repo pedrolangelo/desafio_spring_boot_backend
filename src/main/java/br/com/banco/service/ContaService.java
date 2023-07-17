@@ -15,4 +15,8 @@ public class ContaService {
     public Iterable<ContaModel> listar(){
         return cr.findAll();
     }
+
+    public ContaModel listarId(Long id) {
+        return cr.findById(id).orElse(null);
+    }
 }
