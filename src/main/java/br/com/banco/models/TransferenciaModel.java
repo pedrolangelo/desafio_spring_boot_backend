@@ -18,7 +18,8 @@ public class TransferenciaModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate data_transferencia;
+    @Column(name = "data_transferencia")
+    private LocalDate data;
 
     @Column(precision = 7, scale = 2)
     private float valor;    
@@ -41,12 +42,12 @@ public class TransferenciaModel {
         this.id = id;
     }
 
-    public LocalDate getData_transferencia() {
-        return data_transferencia;
+    public LocalDate getData() {
+        return data;
     }
 
-    public void setData_transferencia(LocalDate data_transferencia) {
-        this.data_transferencia = data_transferencia;
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 
     public float getValor() {

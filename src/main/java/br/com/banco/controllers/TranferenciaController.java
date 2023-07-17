@@ -1,8 +1,10 @@
 package br.com.banco.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,5 +40,14 @@ public class TranferenciaController {
     @GetMapping("/transferencia/nome")
     public ResponseEntity<List<TransferenciaModel>> listarPorNome(@RequestParam("nome") String nomeConta) {
         return new ResponseEntity<List<TransferenciaModel>>(ts.findByNome(nomeConta), HttpStatus.OK);
+    }
+
+    @GetMapping("/transferencias/data")
+    public ResponseEntity<Iterable<TransferenciaModel>> buscarTransferenciasPorData(
+        @RequestParam("dataInicial") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataInicial,
+        @RequestParam("dataFinal") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dataFinal) {
+
+        Iterable<TransferenciaModel> transferencias = ts.listarTransferenciasPorData(dataInicial, dataFinal);
+        return ResponseEntity.ok(transferencias);
     }
 }
