@@ -22,11 +22,15 @@ public class TransferenciaService {
     public TransferenciaModel listarTransferenciaId(Long id) {
         return tr.findById(id).orElse(null);
     }
-    public List<TransferenciaModel> findByNome(String nomeConta) {
-        return tr.findByNome(nomeConta);
+    public List<TransferenciaModel> findByNome(String nomeOperador) {
+        return tr.findByNome(nomeOperador);
     }
 
     public Iterable<TransferenciaModel> listarTransferenciasPorData(LocalDate dataInicial, LocalDate dataFinal) {
         return tr.findByDataBetween(dataInicial, dataFinal);
+    }
+
+    public List<TransferenciaModel> findByNomeAndDataBetween(String nomeOperador, LocalDate dataInicial, LocalDate dataFinal) {
+        return tr.findByNomeAndDataBetween(nomeOperador, dataInicial, dataFinal);
     }
 }
